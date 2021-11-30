@@ -1,10 +1,15 @@
 parameters:
+  orm.migration.directory: '%kernel.project_dir%/config/migrations'
 
 services:
   _defaults:
     autowire: true
     autoconfigure: true
     public: true
+
+  Orm\Migration\DatabaseCreator: ~
+  Orm\Migration\Migrator: { arguments: { $directory: '%orm.migration.directory%' } }
+  Orm\Migration\Creator: { arguments: { $directory: '%orm.migration.directory%' } }
 
   Orm\OrmBundle\Command\:
     resource: '../../Command'
