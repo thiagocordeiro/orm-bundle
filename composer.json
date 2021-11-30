@@ -1,0 +1,45 @@
+{
+  "name": "thiagocordeiro/orm-bundle",
+  "description": "PHP ORM Symfony Bundle",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.0",
+    "ext-json": "*",
+    "symfony/config": "^5.3",
+    "symfony/console": "^5.3",
+    "symfony/dependency-injection": "^5.3",
+    "symfony/http-kernel": "^5.3",
+    "thiagocordeiro/orm": "^0.1.8"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.0",
+    "slevomat/coding-standard": "^6.4",
+    "phpstan/phpstan": "^0.12",
+    "phpstan/phpstan-phpunit": "^0.12",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orm\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Test\\Orm\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test:cs": "vendor/bin/phpcs --colors -ps",
+    "test:stan": "vendor/bin/phpstan analyse src --level=max --ansi",
+    "test:unit": "vendor/bin/phpunit --testdox --color=always",
+    "tests": [
+      "@test:cs",
+      "@test:stan",
+      "@test:unit"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
