@@ -4,20 +4,19 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.1",
     "ext-json": "*",
     "symfony/config": "^5.3",
     "symfony/console": "^5.3",
     "symfony/dependency-injection": "^5.3",
     "symfony/http-kernel": "^5.3",
-    "thiagocordeiro/orm": "^0.1.8"
+    "thiagocordeiro/orm": "^0.2.0"
   },
   "require-dev": {
     "symfony/var-dumper": "^5.0",
-    "slevomat/coding-standard": "^6.4",
-    "phpstan/phpstan": "^0.12",
-    "phpstan/phpstan-phpunit": "^0.12",
-    "phpunit/phpunit": "^9.5"
+    "phpunit/phpunit": "^9.5",
+    "slevomat/coding-standard": "^7.0",
+    "phpstan/phpstan": "^1.4"
   },
   "autoload": {
     "psr-4": {

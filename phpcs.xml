@@ -53,6 +53,7 @@
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification"/>
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/>
 
+        <exclude name="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion.RequiredConstructorPropertyPromotion"/>
         <!-- PHP8 conflicts -->
         <!-- check ?? throw new Exception -->
         <exclude name="SlevomatCodingStandard.ControlStructures.JumpStatementsSpacing.IncorrectLinesCountBeforeControlStructure"/>
