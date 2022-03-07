@@ -1,5 +1,10 @@
 parameters:
   orm.migration.directory: '%kernel.project_dir%/config/migrations'
+  orm.cache_dir: '%kernel.cache_dir%/orm'
+  orm.file_user: 'www-data'
+  orm.file_group: 'www-data'
+  orm.db_dsn: ''
+  orm.entity_config: [ ]
 
 services:
   _defaults:
@@ -7,9 +12,30 @@ services:
     autoconfigure: true
     public: true
 
+  Orm\Connection:
+    arguments:
+      $dsn: '%orm.db_dsn%'
+
+  Orm\EntityManager: ~
   Orm\Migration\DatabaseCreator: ~
   Orm\Migration\Migrator: { arguments: { $directory: '%orm.migration.directory%' } }
   Orm\Migration\Creator: { arguments: { $directory: '%orm.migration.directory%' } }
 
   Orm\OrmBundle\Command\:
     resource: '../../Command'
+
+  Orm\OrmBundle\OrmCacheClearer:
+    tags: [ kernel.cache_clearer ]
+    arguments:
+      $cacheDir: '%orm.cache_dir%'
+      $fileUser: '%orm.file_user%'
+      $fileGroup: '%orm.file_group%'
+      $entityConfig: '%orm.entity_config%'
+
+  Orm\Builder\RepositoryResolver:
+    arguments:
+      $cacheDir: '%orm.cache_dir%'
+      $pluralize: true
+      $fileUser: '%orm.file_user%'
+      $fileGroup: '%orm.file_group%'
+      $entityConfig: '%orm.entity_config%'
